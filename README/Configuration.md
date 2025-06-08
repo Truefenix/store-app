@@ -7,8 +7,55 @@ npx create-next-app .
 y em todos menos o tailwindcss e alias.
 ```
 ---
+---
 
-## 2. Styled-Components
+## 2. ESLint
+
+Já vem com o Next.js, mas pode atualizar:
+
+```bash
+npm install --save-dev eslint @eslint/eslintrc eslint-config-next
+```
+---
+
+## 3. Prettier
+
+```bash
+npm install --save-dev prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+### .prettierrc
+
+
+```json
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all"
+}
+```
+
+### No seu eslint.config.mjs, adicione "plugin:prettier/recommended" nos extends:
+
+
+```json
+...compat.extends(
+  "next/core-web-vitals",
+  "plugin:prettier/recommended"
+)
+```
+
+### .prettierignore
+
+```
+node_modules
+.next
+out
+```
+---
+
+## 4. Styled-Components
 ```
 npm install styled-components
 npm install --save-dev @types/styled-components babel-plugin-styled-components
@@ -31,7 +78,7 @@ export default nextConfig;
 
 ---
 
-## ts-node (opcional para executar .ts direto)
+## 5. ts-node (opcional para executar .ts direto)
 ```
 npm install --save-dev ts-node
 ```
