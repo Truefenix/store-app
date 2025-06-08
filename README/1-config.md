@@ -78,7 +78,6 @@ out
 4. Ative:
 
    * ✅ `ESLint: Enable`
-   * ✅ `Editor: Format On Save`
    * ✅ `Editor: Code Actions On Save` > clique em "Edit in settings.json" e adicione:
 
 ```jsonc

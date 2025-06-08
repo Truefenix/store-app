@@ -1,11 +1,7 @@
-import styles from '../style/page.module.css';
-
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main />
-
-      <footer />
+    <div>
+      <h1 className="">Store it - the only storage solution you need.</h1>
     </div>
   );
 }
