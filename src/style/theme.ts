@@ -1,3 +1,4 @@
+import '@fontsource/poppins';
 export const theme = {
   colors: {
     primary: '#010101',
@@ -12,12 +13,30 @@ export const theme = {
     medium: '2rem',
     large: '3rem',
   },
-  font: {
+  Font: {
     sizes: {
       small: '1.2rem',
       medium: '1.8rem',
       large: '2rem',
       superLarge: '5rem',
+    },
+    px: {
+      px34: '34px',
+    },
+    family: {
+      fontTextSystem: `system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif`,
+      fontTextPoppins: `'Poppins', sans-serif`,
+    },
+    weights: {
+      thin: 100,
+      extraLight: 200,
+      light: 300,
+      regular: 400,
+      medium: 500,
+      semiBold: 600,
+      bold: 700,
+      extraBold: 800,
+      black: 900,
     },
   },
   azulPaleta: {

@@ -51,6 +51,9 @@ Uma tabela de conversão das classes utilitárias mais comuns do Tailwind CSS pa
 | `text-xl`          | `font-size: 1.25rem;`         |
 | `font-bold`        | `font-weight: 700;`           |
 | `text-center`      | `text-align: center;`         |
+|--------------------|-------------------------------|
+| `text-[34px]`      | `font-size: 34px;`            |
+| `leading-[42px]`   | `line-height: 42px;`          |
 
 ---
 
