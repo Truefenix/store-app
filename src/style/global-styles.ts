@@ -15,7 +15,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background-color: ${theme.aleatorioPaleta.aleatorioCinco};
     // Text
     font-family: ${theme.Font.family.fontTextPoppins};
     color: ${theme.aleatorioPaleta.aleatorioCinco};
