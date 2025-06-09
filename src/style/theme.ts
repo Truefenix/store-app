@@ -73,6 +73,6 @@ export const theme = {
     aleatorioTres: '#e47c5d',
     aleatorioQuatro: '#e32d40',
     aleatorioCinco: '#152b3c',
-    aleatorioSeis: '#ff6363',
+    aleatorioSeis: '#6f81ff',
   },
 };
