@@ -1,7 +1,13 @@
 'use client';
 
-import Image from 'next/image';
-import { BodyPLayout, Container, Section, TituloLayout } from './style';
+import {
+  BodyPLayout,
+  Container,
+  Section,
+  TituloLayout,
+  StyledImage,
+  StyledImageLogo,
+} from './style';
 import React from 'react';
 
 interface LayoutAuthProps {
@@ -13,12 +19,12 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
     <Container>
       <Section>
         <div>
-          <Image
-            src="/favicon.png"
+          <StyledImageLogo
+            src="/Logo.png"
             alt="logo"
-            width={16}
-            height={16}
-            style={{ height: 'auto' }}
+            width={224}
+            height={82}
+            style={{ height: 'auto', marginLeft: '9rem' }}
           />
 
           <div style={{ marginTop: '1.25rem', color: 'white' }}>
@@ -27,6 +33,12 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
               This is a place you can store all your documents
             </BodyPLayout>
           </div>
+          <StyledImage
+            src="/Login/Login.png"
+            alt="Files"
+            width={342}
+            height={342}
+          />
         </div>
       </Section>
       {children}
