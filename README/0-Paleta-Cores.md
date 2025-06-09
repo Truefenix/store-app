@@ -1,4 +1,4 @@
-# Paleta de cores para user em theme.ts
+# Paleta de cores para usar em theme.ts
 ## caminho em: src/style/theme.ts
 
 ```
