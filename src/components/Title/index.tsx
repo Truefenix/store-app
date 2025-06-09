@@ -1,14 +1,16 @@
-import { Container } from './style';
+'use client';
+
+import { Container, Titulo } from './style';
 import React from 'react';
 
 interface TitleProps {
-  children: React.ReactNode;
+  text: string;
 }
 
-export default function Title({ children }: TitleProps) {
+export default function Title({ text }: TitleProps) {
   return (
-    <div>
-      <Container>{children}</Container>
-    </div>
+    <Container>
+      <Titulo>{text}</Titulo>
+    </Container>
   );
 }

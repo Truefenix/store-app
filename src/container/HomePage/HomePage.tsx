@@ -1,9 +1,12 @@
-import Title from '../../components/Title/index';
+'use client';
+
+import Title from '../../components/Title';
+import Container from './style';
 
 export default function HomePage() {
   return (
-    <div>
-      <Title>Store it - the only storage solution you need.</Title>
-    </div>
+    <Container>
+      <Title text="Store it - the only storage solution you need." />
+    </Container>
   );
 }
