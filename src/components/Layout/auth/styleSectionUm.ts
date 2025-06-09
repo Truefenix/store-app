@@ -13,7 +13,30 @@ export const Section = styled.section`
   ${({ theme }) => css`
     background-color: ${theme.aleatorioPaleta.aleatorioSeis};
     padding: 2.5rem;
+    display: none;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem;
+
+    // Retira o conteudo no min da tela
+    @media (min-width: 1024px) {
+      display: flex;
+    }
+
+    @media (min-width: 1280px) {
+      width: 40%;
+    }
   `}
+`;
+
+export const StyledDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-height: 800px;
+  max-width: 430px;
+  gap: 3rem;
 `;
 
 export const TituloLayout = styled.h1`

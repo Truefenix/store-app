@@ -54,6 +54,13 @@ Uma tabela de conversão das classes utilitárias mais comuns do Tailwind CSS pa
 |--------------------|-------------------------------|
 | `text-[34px]`      | `font-size: 34px;`            |
 | `leading-[42px]`   | `line-height: 42px;`          |
+| `hidden`           | `display: none;`              |
+| `w-1/2 `           | `width: 50%;`                 |
+| `justify-center `  | `justify-content: center;`    |
+| `p-10 `            | `padding: 2.5rem;`            |
+| `lg:flex`          | `@media (min-width: 1024px) { display: flex; }` |
+| `xl:w-2/5`         | `@media (min-width: 1280px) { width: 40%; }`    |
+
 
 ---
 

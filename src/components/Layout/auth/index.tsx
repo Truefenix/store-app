@@ -7,7 +7,8 @@ import {
   TituloLayout,
   StyledImage,
   StyledImageLogo,
-} from './style';
+  StyledDiv,
+} from './styleSectionUm';
 import React from 'react';
 
 interface LayoutAuthProps {
@@ -16,9 +17,10 @@ interface LayoutAuthProps {
 
 export default function LayoutAuth({ children }: LayoutAuthProps) {
   return (
+    // styleSectionUm
     <Container>
       <Section>
-        <div>
+        <StyledDiv>
           <StyledImageLogo
             src="/Logo.png"
             alt="logo"
@@ -34,12 +36,12 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
             </BodyPLayout>
           </div>
           <StyledImage
-            src="/Login/Login.png"
+            src="/assets/images/files.png"
             alt="Files"
             width={342}
             height={342}
           />
-        </div>
+        </StyledDiv>
       </Section>
       {children}
     </Container>
