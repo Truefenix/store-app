@@ -18,6 +18,7 @@ interface LayoutAuthProps {
 
 export default function LayoutAuth({ children }: LayoutAuthProps) {
   return (
+    // StyleSectionUm
     <Container>
       <Section>
         <StyledDiv>
@@ -42,6 +43,7 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
             height={342}
           />
         </StyledDiv>
+        {/* styleSectionDois */}
       </Section>
       <SectionDois>
         <StyleDivDois>
