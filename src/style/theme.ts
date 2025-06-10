@@ -73,6 +73,12 @@ export const theme = {
     aleatorioTres: '#e47c5d',
     aleatorioQuatro: '#e32d40',
     aleatorioCinco: '#152b3c',
-    aleatorioSeis: '#6f81ff',
+    aleatorioSeis: '#d2b48c',
+  },
+  darkPaleta: {
+    darkBlack: '#19192e',
+    blueRegular: '#002147',
+    blueStrong: '#002063',
+    blueDark: '#041642',
   },
 };

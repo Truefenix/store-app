@@ -9,6 +9,7 @@ import {
   StyledImageLogo,
   StyledDiv,
 } from './styleSectionUm';
+import { SectionDois, StyleDivDois, StyleImageDois } from './styleSectionDois';
 import React from 'react';
 
 interface LayoutAuthProps {
@@ -17,7 +18,6 @@ interface LayoutAuthProps {
 
 export default function LayoutAuth({ children }: LayoutAuthProps) {
   return (
-    // styleSectionUm
     <Container>
       <Section>
         <StyledDiv>
@@ -43,7 +43,17 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
           />
         </StyledDiv>
       </Section>
-      {children}
+      <SectionDois>
+        <StyleDivDois>
+          <StyleImageDois
+            src="assets/icons/logo-full-brand.svg"
+            alt="logo"
+            width={224}
+            height={82}
+          />
+        </StyleDivDois>
+        {children}
+      </SectionDois>
     </Container>
   );
 }

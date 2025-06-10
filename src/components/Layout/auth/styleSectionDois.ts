@@ -3,37 +3,40 @@
 import styled, { css } from 'styled-components';
 import '@fontsource/poppins/700.css'; // bold
 import '@fontsource/poppins/400.css'; // regular
+import Image from 'next/image';
 
-export const Container = styled.div`
-  display: flex;
-  min-height: 100vh;
-`;
-export const Section = styled.section`
+export const SectionDois = styled.section`
   ${({ theme }) => css`
-    font-weight: ${theme.Font.weights.medium};
+    background-color: ${theme.aleatorioPaleta.aleatorioSeis};
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   `}
-`;
 
-export const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 800px;
-  max-width: 430px;
-  gap: 3rem;
+  @media (min-width: 1024px) {
+    justify-content: center;
+    padding: 40px; /* p-10 */
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 `;
+export const StyleDivDois = styled.div`
+  margin-bottom: 64px; /* mb-16 */
 
-export const TituloLayout = styled.h1`
-  ${({ theme }) => css`
-    font-weight: ${theme.Font.weights.bold};
-    font-size: ${theme.Font.px.px34};
-    line-height: 42px;
-  `}
+  @media (min-width: 1024px) {
+    display: none; /* lg:hidden */
+  }
 `;
-export const BodyPLayout = styled.p`
-  ${({ theme }) => css`
-    font-weight: ${theme.Font.weights.regular};
-    font-size: 16px;
-    line-height: 24px;
-  `}
+export const StyleImageDois = styled(Image)`
+  height: auto; /* h-auto */
+  width: 200px; /* w-[200px] */
+
+  @media (min-width: 1024px) {
+    width: 250px; /* lg:w-[250px] */
+  }
 `;
