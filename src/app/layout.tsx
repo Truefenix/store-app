@@ -1,6 +1,6 @@
-import ThemeProviderWrapper from '../components/ThemeProviderWrapper';
 import { GlobalStyles } from '../style/global-styles';
 import { metadata } from '../lib/seo-metadata';
+import ThemeProviderWrapper from '@/components/Layout/ThemeProviderWrapper';
 
 export { metadata };
 

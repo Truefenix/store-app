@@ -1,5 +1,5 @@
-import LoginSignIn from '@/container/Login/sign-in';
+import AuthForm from '@/components/AuthForm';
 
-export default function SignIn() {
-  return <LoginSignIn />;
-}
+const SignIn = () => <AuthForm type="sign-in" />;
+
+export default SignIn;
