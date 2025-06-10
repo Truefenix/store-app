@@ -46,7 +46,7 @@ export default function LayoutAuth({ children }: LayoutAuthProps) {
       <SectionDois>
         <StyleDivDois>
           <StyleImageDois
-            src="assets/icons/logo-full-brand.svg"
+            src="/logo-full-brand.png"
             alt="logo"
             width={224}
             height={82}
