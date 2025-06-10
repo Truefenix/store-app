@@ -5,11 +5,8 @@
 ## 1. Install Tailwind CSS with Next.js
 
 ````
-// vai sobre-escrever no projeto do next
-1. npx create-next-app@latest my-project --typescript --eslint --app
-
 // install tailwind
-2. npm install tailwindcss @tailwindcss/postcss postcss
+npm install tailwindcss @tailwindcss/postcss postcss
 ````
 
 ## 2. Criar arquivo > postcss.config.mjs

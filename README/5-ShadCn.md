@@ -17,11 +17,14 @@ Bem estilizado e consistente com o resto do aplicativo.
 ## Install - npm
 [Link Shadcn Install Next](https://ui.shadcn.com/docs/installation/next)
 
-### Precisa ter tailwind css instalado.
+### !Aviso - Precisa ter tailwind css instalado.
 ````
 1. npx shadcn@latest init
-2. Neutral >
+2. npx shadcn@latest add form
+3. npx shadcn@latest add input
 ````
+ - Depois da instalação ele cria a pasta src/components/ui/
+ - ui/ > tem 3 arquivos (button, form, label).
 ___
 
 ## zod - para tipar o formulário
