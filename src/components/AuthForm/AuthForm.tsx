@@ -23,6 +23,8 @@ import {
   StyleFormLabel,
   StyleFormMessage,
 } from './styleForm';
+import { useState } from 'react';
+import { StyleImageUm } from './styleImage';
 
 const formSchema = z.object({
   fullName: z.string().min(2, 'Full Name is required').max(50),
@@ -32,6 +34,8 @@ const formSchema = z.object({
 type FormType = 'sign-in' | 'sign-up';
 
 function AuthForm({ type }: { type: FormType }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -89,6 +93,15 @@ function AuthForm({ type }: { type: FormType }) {
 
         <StyledButton type="submit">
           {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+
+          {isLoading && (
+            <StyleImageUm
+              src="/assets/icons/loader.svg"
+              alt="loader"
+              width={24}
+              height={24}
+            />
+          )}
         </StyledButton>
       </StyleAuthForm>
     </Form>
