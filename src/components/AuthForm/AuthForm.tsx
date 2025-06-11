@@ -14,7 +14,7 @@ import {
   // FormMessage,
 } from '@/components/ui/form';
 // import { Input } from '@/components/ui/input';
-import { TitleFormH1 } from './TitleForm';
+import { TitleFormH1 } from './style/TitleForm';
 import {
   ShadInput,
   StyleAuthForm,
@@ -22,21 +22,30 @@ import {
   StyleFormItem,
   StyleFormLabel,
   StyleFormMessage,
-} from './styleForm';
+} from './style/styleForm';
 import { useState } from 'react';
-import { StyleImageUm } from './styleImage';
-import { StyleErrorMessage } from './styleErrorMessage';
-
-const formSchema = z.object({
-  fullName: z.string().min(2, 'Full Name is required').max(50),
-  email: z.string().email('Invalid email address'),
-});
+import { StyleImageUm } from './style/styleImage';
+import { StyleErrorMessage } from './style/styleErrorMessage';
+import { BodyTitleDois } from './style/styleBodyTitle';
+import { StyleLink } from './style/styleLink';
 
 type FormType = 'sign-in' | 'sign-up';
+
+const authFormShema = (formType: FormType) => {
+  return z.object({
+    email: z.string().email(),
+    fullName:
+      formType === 'sign-up'
+        ? z.string().min(2).max(50)
+        : z.string().optional(),
+  });
+};
 
 function AuthForm({ type }: { type: FormType }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const formSchema = authFormShema(type);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -106,7 +115,18 @@ function AuthForm({ type }: { type: FormType }) {
           )}
         </StyledButton>
         {errorMessage && <StyleErrorMessage>*{errorMessage}</StyleErrorMessage>}
-        <div></div>
+
+        <BodyTitleDois>
+          <p style={{ color: 'Blue' }}>
+            {type === 'sign-in'
+              ? `Don't have an account?`
+              : `Already have an account?`}
+
+            <StyleLink href={type === 'sign-in' ? 'sign-up' : 'sign-in'}>
+              {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+            </StyleLink>
+          </p>
+        </BodyTitleDois>
       </StyleAuthForm>
     </Form>
   );

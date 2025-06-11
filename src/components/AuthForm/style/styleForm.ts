@@ -17,10 +17,10 @@ export const StyleAuthForm = styled.form`
 
   /* Espaçamento vertical entre elementos filhos */
   & > * + * {
-    margin-top: 1.5rem; /* equivalente a space-y-6 */
+    margin-top: 1.5rem;
 
     @media (min-width: 1024px) {
-      margin-top: 2rem; /* lg:space-y-8 */
+      margin-top: 2rem;
     }
   }
 
@@ -88,7 +88,7 @@ export const StyledButton = styled(Button)`
   height: 66px;
 
   border: none;
-  border-radius: 9999px; /* full rounded */
+  border-radius: 9999px;
 
   background-color: ${theme.darkPaleta.blueRegular};
   color: ${theme.aleatorioPaleta.aleatorioSeis};
