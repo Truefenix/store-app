@@ -4,64 +4,94 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
-import { Button } from '@/components/ui/button';
+// import { Button } from '@/components/ui/button';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
-  FormMessage,
+  // FormLabel,
+  // FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 import { TitleFormH1 } from './TitleForm';
+import {
+  ShadInput,
+  StyleAuthForm,
+  StyledButton,
+  StyleFormItem,
+  StyleFormLabel,
+  StyleFormMessage,
+} from './styleForm';
 
 const formSchema = z.object({
-  username: z.string().min(2).max(50),
+  fullName: z.string().min(2, 'Full Name is required').max(50),
+  email: z.string().email('Invalid email address'),
 });
 
-type FormType = 'sign-in' | 'sign-out';
+type FormType = 'sign-in' | 'sign-up';
 
 function AuthForm({ type }: { type: FormType }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: '',
+      fullName: '',
+      email: '',
     },
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
+
   return (
-    <>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="auth-form">
-          <TitleFormH1>
-            {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
-          </TitleFormH1>
+    <Form {...form}>
+      <StyleAuthForm onSubmit={form.handleSubmit(onSubmit)}>
+        <TitleFormH1 className="form-title">
+          {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+        </TitleFormH1>
+
+        {type === 'sign-up' && (
           <FormField
             control={form.control}
-            name="username"
+            name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
-                <FormControl>
-                  <Input placeholder="shadcn" {...field} />
-                </FormControl>
-                <FormDescription>
-                  This is your public display name.
-                </FormDescription>
-                <FormMessage />
+                <StyleFormItem>
+                  <StyleFormLabel>Full Name</StyleFormLabel>
+
+                  <FormControl>
+                    <ShadInput placeholder="Enter your full name" {...field} />
+                  </FormControl>
+                </StyleFormItem>
+                <StyleFormMessage />
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
-        </form>
-      </Form>
-      {/*OTP Verification*/}
-    </>
+        )}
+
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <StyleFormItem>
+                <StyleFormLabel>Email</StyleFormLabel>
+
+                <FormControl>
+                  <ShadInput placeholder="Enter your email" {...field} />
+                </FormControl>
+              </StyleFormItem>
+              <StyleFormMessage />
+            </FormItem>
+          )}
+        />
+
+        <StyledButton type="submit">
+          {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
+        </StyledButton>
+      </StyleAuthForm>
+    </Form>
   );
 }
 
