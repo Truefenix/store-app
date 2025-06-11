@@ -25,6 +25,7 @@ import {
 } from './styleForm';
 import { useState } from 'react';
 import { StyleImageUm } from './styleImage';
+import { StyleErrorMessage } from './styleErrorMessage';
 
 const formSchema = z.object({
   fullName: z.string().min(2, 'Full Name is required').max(50),
@@ -35,6 +36,7 @@ type FormType = 'sign-in' | 'sign-up';
 
 function AuthForm({ type }: { type: FormType }) {
   const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -91,7 +93,7 @@ function AuthForm({ type }: { type: FormType }) {
           )}
         />
 
-        <StyledButton type="submit">
+        <StyledButton type="submit" disabled={isLoading}>
           {type === 'sign-in' ? 'Sign In' : 'Sign Up'}
 
           {isLoading && (
@@ -103,6 +105,8 @@ function AuthForm({ type }: { type: FormType }) {
             />
           )}
         </StyledButton>
+        {errorMessage && <StyleErrorMessage>*{errorMessage}</StyleErrorMessage>}
+        <div></div>
       </StyleAuthForm>
     </Form>
   );
