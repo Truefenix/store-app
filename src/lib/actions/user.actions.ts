@@ -1,14 +1,67 @@
-// fluxo para cria a conta
-// 1. user entra fullName e email
-// 2. check se o usuario já existe usando o email
-// 3. retorna OTP (one the password) para o email's do user
-// 4. isso será mandando um secret key para criar a session
-// 5. Cria um novo documento de user se é um nobo user
-// 6. Retorna o user's accountId que será usada para completar o login
-// 7. Verifica OTP e authentication para login
-
 'use server'; // garante que nunca será executado no client
+import { ID, Query } from 'node-appwrite';
+import { createAdminClient } from '../appwrite';
+import { appwriteConfig } from '../appwrite/config';
+import { parseStringify } from '../utils';
 
-const createAccount = async ({fullName, email,}: {fullName: string; email: string;} => {
+const getUserByEmail = async (email: string) => {
+  const { databases } = await createAdminClient();
 
-})
+  const result = await databases.listDocuments(
+    appwriteConfig.databaseId,
+    appwriteConfig.usersCollectionsId,
+    [Query.equal('email', email)],
+  );
+
+  return result.total > 0 ? result.documents[0] : null;
+};
+
+const handleError = (error: unknown, message: string) => {
+  console.log(error, message);
+  throw error;
+};
+
+const sendEmailOTP = async ({ email }: { email: string }) => {
+  const { account } = await createAdminClient();
+
+  try {
+    const session = await account.createEmailToken(ID.unique(), email);
+
+    return session.userId;
+  } catch (error) {
+    handleError(error, 'Failed to send EMAIL OTP');
+  }
+};
+
+export const createAccount = async ({
+  fullName,
+  email,
+}: {
+  fullName: string;
+  email: string;
+}) => {
+  const existeUser = await getUserByEmail(email);
+
+  const accountId = await sendEmailOTP({ email });
+
+  if (!accountId) throw new Error('Failed to send an OTP');
+
+  if (!existeUser) {
+    const { databases } = await createAdminClient();
+
+    await databases.createDocument(
+      appwriteConfig.databaseId,
+      appwriteConfig.usersCollectionsId,
+      ID.unique(),
+      {
+        fullName,
+        email,
+        avatar:
+          'https://cdn2.iconfinder.com/data/icons/audio-16/96/user_avatar_profile_login_button_account_member-512.png',
+        accountId,
+      },
+    );
+  }
+
+  return parseStringify({ accountId }); // function de /lib/utils.ts
+};

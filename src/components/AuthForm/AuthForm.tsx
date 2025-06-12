@@ -28,6 +28,8 @@ import { StyleImageUm } from './style/styleImage';
 import { StyleErrorMessage } from './style/styleErrorMessage';
 import { BodyTitleDois } from './style/styleBodyTitle';
 import { StyleLink } from './style/styleLink';
+import { createAccount } from '@/lib/actions/user.actions';
+import { email, string } from 'zod/v4-mini';
 
 type FormType = 'sign-in' | 'sign-up';
 
@@ -44,6 +46,7 @@ const authFormShema = (formType: FormType) => {
 function AuthForm({ type }: { type: FormType }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [accountId, setAccountId] = useState(null);
 
   const formSchema = authFormShema(type);
 
@@ -56,7 +59,21 @@ function AuthForm({ type }: { type: FormType }) {
   });
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    setIsLoading(true);
+    setErrorMessage('');
+
+    try {
+      const user = await createAccount({
+        fullName: values.fullName || '',
+        email: values.email,
+      });
+
+      setAccountId(user.accountId);
+    } catch {
+      setErrorMessage('Failed to criate account, Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
