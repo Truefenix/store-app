@@ -18,6 +18,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.513.0",
     "next": "^15.3.3",
+    "node-appwrite": "^17.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.57.0",
@@ -25,6 +26,7 @@
     "tailwind-merge": "^3.3.0",
     "zod": "^3.25.57"
   },
+  "overrides": {"react": "$react", "react-dom": "$react-dom"},
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^20",
